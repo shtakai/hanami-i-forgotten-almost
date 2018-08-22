@@ -1,5 +1,7 @@
 # Bookshelf
 
+[![GuardRails badge](https://badges.production.guardrails.io/shtakai/hanami-i-forgotten-almost.svg)](https://www.guardrails.io)
+
 Welcome to your new Hanami project!
 
 ## Setup
