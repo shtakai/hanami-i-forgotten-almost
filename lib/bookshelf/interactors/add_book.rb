@@ -10,6 +10,6 @@ class AddBook
   end
 
   def call(book_attributes)
-    @book = Book.new(book_attributes)
+    @book = BookRepository.new.create(book_attributes)
   end
 end

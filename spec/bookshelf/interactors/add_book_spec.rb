@@ -18,6 +18,8 @@ describe AddBook do
       assert_equal result.book.author, 'James Baldwin'
     end
 
+    it 'persists the Book' do
+      refute_nil result.book.id
+    end
   end
-
 end
