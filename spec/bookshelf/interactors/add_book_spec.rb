@@ -18,8 +18,21 @@ describe AddBook do
       assert_equal result.book.author, 'James Baldwin'
     end
 
-    it 'persists the Book' do
-      refute_nil result.book.id
+    # it 'persists the Book' do
+    #   refute_nil result.book.id
+    # end
+  end
+
+  describe 'persistence' do
+    let(:repository) { instance_double("BookRepository") }
+
+    it 'persists the book' do
+      expect(repository).to receive(:create)
+      AddBook.new(repository: repository).call(attributes)
+
     end
+    # repository.stub :create do
+    # expect(repository).to receive(:create)
+    # AddBook.new(repository: repository).call(attributes)
   end
 end
