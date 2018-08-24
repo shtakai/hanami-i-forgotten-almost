@@ -3,6 +3,6 @@ require_relative '../../spec_helper'
 describe Book do
   it 'can be initialized with attributes' do
     book = Book.new(title: 'Refactoring')
-    book.title.must_equal 'Refactoring'
+    expect(book.title).to eq 'Refactoring'
   end
 end

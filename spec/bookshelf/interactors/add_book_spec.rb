@@ -8,19 +8,17 @@ describe AddBook do
     let(:result) { interactor.call(attributes) }
 
     it 'succeeds' do
-      # NOTE ↓is not working.
-      # expect(interactor.call(attributes)).to be_a_success
-      assert interactor.call(attributes).success?
+      expect(interactor.call(attributes)).to be_a_success
     end
 
     it 'creates a Book with correct title and author' do
-      assert_equal result.book.title, 'The Fire Next Time'
-      assert_equal result.book.author, 'James Baldwin'
+      expect(result.book.title).to eq 'The Fire Next Time'
+      expect(result.book.author).to eq 'James Baldwin'
     end
 
-    # it 'persists the Book' do
-    #   refute_nil result.book.id
-    # end
+    it 'persists the Book' do
+      expect(result.book.id).not_to be_nil
+    end
   end
 
   describe 'persistence' do
@@ -29,10 +27,6 @@ describe AddBook do
     it 'persists the book' do
       expect(repository).to receive(:create)
       AddBook.new(repository: repository).call(attributes)
-
     end
-    # repository.stub :create do
-    # expect(repository).to receive(:create)
-    # AddBook.new(repository: repository).call(attributes)
   end
 end
