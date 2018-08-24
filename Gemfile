@@ -18,7 +18,8 @@ group :test, :development do
 end
 
 group :test do
-  gem 'minitest'
+  gem 'rspec-hanami'
+  # gem 'minitest'
   gem 'capybara'
 end
 

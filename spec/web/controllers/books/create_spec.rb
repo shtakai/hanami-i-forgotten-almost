@@ -14,16 +14,14 @@ describe Web::Controllers::Books::Create do
     it 'creates a new book' do
       action.call(params)
       book = repository.last
-
-      book.id.wont_be_nil
-      book.title.must_equal params.dig(:book, :title)
+      expect(book.id).not_to be_nil
+      expect(book.title).to eq params.dig(:book, :title)
     end
 
     it 'redirects the user to the books listing' do
       response = action.call(params)
-
-      response[0].must_equal 302
-      response[1]['Location'].must_equal '/books'
+      expect(response[0]).to eq 302
+      expect(response[1]['Location']).to eq '/books'
     end
   end
 
@@ -32,16 +30,15 @@ describe Web::Controllers::Books::Create do
 
     it 'returns HTTP client error' do
       response = action.call(params)
-      response[0].must_equal 422
+      expect(response[0]).to eq 422
     end
 
     it 'dumps errors in params' do
       action.call(params)
       errors = action.params.errors
 
-      errors.dig(:book, :title).must_equal ['is missing']
-      errors.dig(:book, :author).must_equal ['is missing']
+      expect(errors.dig(:book, :title)).to eq ['is missing']
+      expect(errors.dig(:book, :author)).to eq ['is missing']
     end
-
   end
 end
